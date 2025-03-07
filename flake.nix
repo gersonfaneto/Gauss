@@ -32,6 +32,7 @@
               # vcpkg
               # vcpkg-tool
               shfmt
+              verible
               bash-language-server
               efm-langserver
             ] ++ (if system == "aarch64-darwin" then [ ] else [ gdb ]);
