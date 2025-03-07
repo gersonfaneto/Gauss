@@ -1,3 +1,3 @@
-[submodule "external/caffeine"]
-	path = external/caffeine
+[submodule "client/external/caffeine"]
+	path = client/external/caffeine
 	url = git@github.com:gersonfaneto/Caffeine
