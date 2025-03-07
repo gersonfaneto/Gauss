@@ -1,0 +1,59 @@
+#!/usr/bin/env sh
+
+# set -e
+# set -x
+
+CFLAGS="-Wall -Werror -Wextra"
+CFLAGS="$CFLAGS -Wno-unused-variable  -Wno-unused-function  -Wno-unused-parameter"
+CFLAGS="$CFLAGS -std=c99"
+CFLAGS="$CFLAGS -I ./external/caffeine"
+
+SOURCES="./src/main.c"
+
+OUTPUT="./build/main"
+
+build_release() {
+	# shellcheck disable=SC2086
+	if command -v bear; then
+		bear --output build/compile_commands.json -- cc -o $OUTPUT $SOURCES $CFLAGS
+	else
+		cc -o $OUTPUT $SOURCES $CFLAGS
+	fi
+}
+
+build_debug() {
+	CFLAGS="$CFLAGS -D__DEBUG__"
+
+	# shellcheck disable=SC2069,SC2086
+	if command -v bear 2>&1 1>/dev/null ; then
+		bear --output build/compile_commands.json -- cc -o $OUTPUT $SOURCES $CFLAGS
+	else
+		cc -o $OUTPUT $SOURCES $CFLAGS
+	fi
+}
+
+main() {
+	if [ ! -d "./build" ]; then
+		mkdir build
+	fi
+
+	if [ ! $# -eq 1 ]; then
+		echo "Usage: $0 [release|debug]"
+		exit 1
+	fi
+
+	case $1 in
+	release)
+		build_release
+		;;
+	debug)
+		build_debug
+		;;
+	*)
+		echo "Usage: $0 [release|debug]"
+		exit 1
+		;;
+	esac
+}
+
+main "$@"
