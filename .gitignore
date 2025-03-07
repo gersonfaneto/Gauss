@@ -1,9 +1,2 @@
 # Nix
 .direnv/
-
-# LSP
-.cache/
-.clangd
-
-# Project
-build/
