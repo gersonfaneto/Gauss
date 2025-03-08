@@ -1,5 +1,7 @@
+# Based on :: https://github.com/the-nix-way/dev-templates
+
 {
-  description = "A Nix-flake-based C/C++ development environment";
+  description = "Gauss by @gersonfaneto";
 
   inputs.nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.*.tar.gz";
 
@@ -19,21 +21,19 @@
           }
           {
             packages = with pkgs; [
+              # C/C++
               bear
               valgrind
               clang-tools
-              # cmake
-              # codespell
-              # conan
-              # cppcheck
-              # doxygen
-              # gtest
-              # lcov
-              # vcpkg
-              # vcpkg-tool
+
+              # Bash
               shfmt
-              verible
               bash-language-server
+
+              # Verilog
+              verible
+
+              # Others
               efm-langserver
             ] ++ (if system == "aarch64-darwin" then [ ] else [ gdb ]);
           };
