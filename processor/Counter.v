@@ -1,3 +1,5 @@
+// Reference :: https://www.chipverify.com/verilog/verilog-4-bit-counter
+
 module Counter (
     clock,
     reset,

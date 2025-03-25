@@ -1,3 +1,5 @@
+// Reference :: https://www.chipverify.com/verilog/verilog-single-port-ram
+
 module RAM #(
     parameter ADDR_WIDTH = 4,
     parameter DATA_WIDTH = 32,
