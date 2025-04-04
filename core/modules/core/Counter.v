@@ -3,12 +3,15 @@
 module Counter (
     clock,
     reset,
-    counter
+    data
 );
 
   input wire clock;
   input wire reset;
-  output reg [3:0] counter;
+
+  reg [3:0] counter;
+
+  output wire [3:0] data;
 
   always @(posedge clock) begin
     if (reset) begin
@@ -18,21 +21,23 @@ module Counter (
     end
   end
 
+  assign data = counter;
+
 endmodule
 
-`timescale 1ns/100ps
+`timescale 1ns / 100ps
 
 module Counter_TB;
 
   reg clock;
   reg reset;
 
-  wire [3:0] counter;
+  wire [3:0] data;
 
   Counter UUT (
-      .clock  (clock),
-      .reset  (reset),
-      .counter(counter)
+      .clock(clock),
+      .reset(reset),
+      .data (data)
   );
 
   always #5 clock = ~clock;
@@ -53,7 +58,7 @@ module Counter_TB;
   end
 
   initial begin
-    $monitor("Time = %0t, Counter = %b", $time, counter);
+    $monitor("Time = %0t, Counter = %b", $time, data);
   end
 
 endmodule

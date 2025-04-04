@@ -16,9 +16,24 @@
  */
 
 module Gauss (
-    clock
+    clock,
+    reset,
+    leds
 );
 
   input wire clock;
+  input wire reset;
+
+  reg [3:0] data;
+
+  output wire [3:0] leds;
+
+  Counter C0 (
+      .clock(clock),
+      .reset(reset),
+      .data (data)
+  );
+
+  assign leds = data;
 
 endmodule
