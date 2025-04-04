@@ -15,6 +15,8 @@
  * on a separate module.
  */
 
+`include "modules/core/Counter.v"
+
 module Gauss (
     clock,
     reset,
@@ -24,16 +26,12 @@ module Gauss (
   input wire clock;
   input wire reset;
 
-  reg [3:0] data;
-
   output wire [3:0] leds;
 
   Counter C0 (
       .clock(clock),
       .reset(reset),
-      .data (data)
+      .data (leds)
   );
-
-  assign leds = data;
 
 endmodule
