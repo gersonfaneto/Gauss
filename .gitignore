@@ -1,6 +1,10 @@
 # Nix
 /.direnv/
 
+# C
+**/.cache/
+**/build/
+
 # Quartus
 *.bak
 *.cmp
