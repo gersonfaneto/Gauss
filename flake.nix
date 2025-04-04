@@ -26,7 +26,13 @@
           # The Nix packages provided in the environment
           # Add any you need here
           packages = with pkgs; [
+            # Verilog
             verible
+
+            # C
+            bear
+            valgrind
+            clang-tools
           ];
 
           # Set any environment variables for your dev shell
