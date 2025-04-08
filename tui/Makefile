@@ -49,15 +49,14 @@ OBJECT_NAMES = $(SOURCES:.c=.o)
 OBJECTS = $(patsubst %, $(OBJ_DIR)/%, $(OBJECT_NAMES))
 
 # Flags to tune error levels in the compilation process.
-WFLAGS = -Wall -Wextra -pedantic
+WFLAGS = -Wall -Werror -Wextra -pedantic
 WFLAGS += \
+	  -Wno-unused-function \
 	  -Wno-unused-variable \
-	  -Wno-unused-parameter \
-	  -Wno-unused-but-set-variable \
-	  -Wno-missing-field-initializers
+	  -Wno-unused-parameter
 
 # Flags to be passed in the compilation and linking process, respectively.
-CFLAGS = -std=gnu90
+CFLAGS = -std=gnu99
 CFLAGS += $(WFLAGS) $(addprefix -I, $(INCLUDE_DIRS))
 LDFLAGS = $(addprefix -I, $(INCLUDE_DIRS))
 
