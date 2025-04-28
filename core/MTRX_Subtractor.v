@@ -1,18 +1,10 @@
 module MTRX_Subtractor (
-    clock,
-    reset,
-    a,
-    b,
-    c
+    input wire clock,
+    input wire reset,
+    input wire [199:0] a,
+    input wire [199:0] b,
+    output reg [199:0] c
 );
-
-  input wire clock;
-  input wire reset;
-
-  input wire [199:0] a;
-  input wire [199:0] b;
-
-  output reg [199:0] c;
 
   integer i;
 

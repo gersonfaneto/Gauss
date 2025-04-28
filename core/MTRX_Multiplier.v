@@ -1,22 +1,12 @@
 module MTRX_Multiplier (
-    clock,
-    reset,
-    mode,
-    scalar,
-    a,
-    b,
-    c
+    input wire clock,
+    input wire reset,
+    input wire mode, // 0 :: Matrix-Matrix | 1 :: Matrix-Scalar
+    input wire [7:0] scalar,
+    input wire [199:0] a,
+    input wire [199:0] b,
+    output reg [199:0] c
 );
-
-  input wire clock;
-  input wire reset;
-  input wire mode;  // 0 = Matrix-Matrix, 1 = Matrix-Scalar
-
-  input wire [199:0] a;
-  input wire [199:0] b;
-  input wire [7:0] scalar;
-
-  output reg [199:0] c;
 
   integer row, col, k;
   reg [15:0] sum;
